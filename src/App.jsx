@@ -1,25 +1,22 @@
-
-import { Routes } from 'react-router-dom'
-import './App.css'
-import DefaultLayout from 
-import Dashboard from './pages/Dashboard'
-import UploadFile from './pages/UploadFile'
-import ScanResult from './pages/ScanResult'
-import Settings from './pages/Settings'
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import DefaultLayout from './layouts/DefaultLayout';
+import Dashboard from './pages/Dashboard';
+import UploadFile from './pages/UploadFile';
+import ScanResult from './pages/ScanResult';
+import Settings from './pages/Settings';
 
 function App() {
- 
-
   return (
-   <Routes>
-       <Routes elment={<DefaultLayout/>}></Routes>
-       <Routes path="/" elment={<Dashboard/>} />
-        <Routes path="/upload" elment={<UploadFile/>} />
-         <Routes path="/results" elment={<ScanResult/>} />
-           <Routes path="/settings" elment={<Settings/>} />
-      </Routes>
-   </Routes>
-  )
+    <Routes>
+      <Route element={<DefaultLayout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/upload" element={<UploadFile />} />
+        <Route path="/results" element={<ScanResult />} />
+        <Route path="/settings" element={<Settings />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
