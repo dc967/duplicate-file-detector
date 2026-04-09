@@ -1,13 +1,20 @@
 import FileUploader from '../components/FileUploader'
 import { useState } from 'react'
+import ScanProgress from '../components/ScanProgress'
 
 function UploadFile() {
   const [path, setPath] = useState('')
   const [recursive, setRecursive] = useState(true)
   const [skipSystem, setSkipSystem] = useState(true)
+  const [isScanning, setIsScanning] = useState(false)
+  const [progress, setProgress] = useState(0)
 
   const handleFileSelect = (files) => {
     console.log('Files selected:', files)
+  }
+
+  const handleScan =() => {
+    setIsScanning(true)
   }
 
   return (
@@ -91,6 +98,28 @@ function UploadFile() {
 
         </div>
       </div>
+
+
+     {/* ScanProgress — Start Scan ke baad dikhega */}
+      {isScanning && (
+        <div className="col-span-2">
+          <ScanProgress
+            progress={65}
+            scanned={8432}
+            total={12842}
+            currentFile="vacation_photo.jpg"
+            isScanning={isScanning}
+          />
+        </div>
+      )}
+
+
+
+
+
+
+
+
 
     </div>
   )
