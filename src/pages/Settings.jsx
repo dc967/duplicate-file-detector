@@ -1,10 +1,10 @@
 
 import { useState } from 'react'
 import { Trash2, Plus } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 function Settings() {
   
-  const [darkMode, setDarkMode] = useState(false)
   const [moveToTrash, setMoveToTrash] = useState(true)
   const [autoScan, setAutoScan] = useState(false)
   const [emailNotif, setEmailNotif] = useState(false)
@@ -14,7 +14,7 @@ function Settings() {
   const [recursive, setRecursive] = useState(true)
   const [skipSystem, setSkipSystem] = useState(true)
   const [minFileSize, setMinFileSize] = useState('1 KB')
-
+  const { darkMode, toggleTheme } = useTheme()
   
   const [excludedPaths, setExcludedPaths] = useState([
     '/System/Library',
@@ -57,7 +57,7 @@ function Settings() {
   )
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
       
       <div className="flex flex-col gap-4">
@@ -69,7 +69,7 @@ function Settings() {
             <p className="text-xs text-gray-400 mt-1">Configure app behaviour</p>
           </div>
           <div className="p-5">
-            <SettingRow title="Dark Mode" desc="Toggle dark theme" value={darkMode} onChange={setDarkMode} />
+            <SettingRow title="Dark Mode" desc="Toggle dark theme" value={darkMode} onChange={toggleTheme} />
             <SettingRow title="Move to Trash" desc="Safer deletion mode" value={moveToTrash} onChange={setMoveToTrash} />
             <SettingRow title="Auto Scan on Startup" desc="Run scan when app launches" value={autoScan} onChange={setAutoScan} />
             <SettingRow title="Email Notifications" desc="Notify when scan completes" value={emailNotif} onChange={setEmailNotif} border={false} />
